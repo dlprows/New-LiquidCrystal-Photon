@@ -95,47 +95,73 @@
 
 // CONSTRUCTORS
 // ---------------------------------------------------------------------------
+LiquidCrystal_I2C::LiquidCrystal_I2C() { }
+
 LiquidCrystal_I2C::LiquidCrystal_I2C( uint8_t lcd_Addr )
 {
-   config(lcd_Addr, EN, RW, RS, D4, D5, D6, D7);
+  Initialize(lcd_Addr);
 }
 
-
-LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t backlighPin, 
-                                     t_backlighPol pol = POSITIVE)
+LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t backlighPin, t_backlighPol pol = POSITIVE)
 {
-   config(lcd_Addr, EN, RW, RS, D4, D5, D6, D7);
-   setBacklightPin(backlighPin, pol);
+  Initialize(lcd_Addr, backlighPin, pol);
 }
 
-LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw,
-                                     uint8_t Rs)
+LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs)
 {
-   config(lcd_Addr, En, Rw, Rs, D4, D5, D6, D7);
+  Initialize(lcd_Addr, En, Rw, Rs);
 }
 
-LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw,
-                                     uint8_t Rs, uint8_t backlighPin, 
-                                     t_backlighPol pol = POSITIVE)
+LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, uint8_t backlighPin, t_backlighPol pol = POSITIVE)
 {
-   config(lcd_Addr, En, Rw, Rs, D4, D5, D6, D7);
-   setBacklightPin(backlighPin, pol);
+  Initialize(lcd_Addr, En, Rw, Rs, backlighPin, pol);
 }
 
-LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw,
-                                     uint8_t Rs, uint8_t d4, uint8_t d5,
-                                     uint8_t d6, uint8_t d7 )
+LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7 )
 {
-   config(lcd_Addr, En, Rw, Rs, d4, d5, d6, d7);
+  Initialize(lcd_Addr, En, Rw, Rs, d4, d5, d6, d7);
 }
 
-LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw,
-                                     uint8_t Rs, uint8_t d4, uint8_t d5,
-                                     uint8_t d6, uint8_t d7, uint8_t backlighPin, 
-                                     t_backlighPol pol = POSITIVE )
+LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, uint8_t backlighPin, t_backlighPol pol = POSITIVE )
 {
-   config(lcd_Addr, En, Rw, Rs, d4, d5, d6, d7);
-   setBacklightPin(backlighPin, pol);
+  Initialize(lcd_Addr, En, Rw, Rs, d4, d5, d6, d7, backlighPin, pol);
+}
+
+// PUBLIC INITIALIZERS
+// ---------------------------------------------------------------------------
+//these methods are intended to allow the use of an empty constructor if you manually call the initializer
+
+void LiquidCrystal_I2C::Initialize(uint8_t lcd_Addr)
+{
+  config(lcd_Addr, EN, RW, RS, D4, D5, D6, D7);
+}
+
+void LiquidCrystal_I2C::Initialize(uint8_t lcd_Addr, uint8_t backlighPin, t_backlighPol pol = POSITIVE)
+{
+  config(lcd_Addr, EN, RW, RS, D4, D5, D6, D7);
+  setBacklightPin(backlighPin, pol);
+}
+
+void LiquidCrystal_I2C::Initialize(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs)
+{
+  config(lcd_Addr, En, Rw, Rs, D4, D5, D6, D7);
+}
+
+void LiquidCrystal_I2C::Initialize(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, uint8_t backlighPin, t_backlighPol pol = POSITIVE)
+{
+  config(lcd_Addr, En, Rw, Rs, D4, D5, D6, D7);
+  setBacklightPin(backlighPin, pol);
+}
+
+void LiquidCrystal_I2C::Initialize(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7 )
+{
+  config(lcd_Addr, En, Rw, Rs, d4, d5, d6, d7);
+}
+
+void LiquidCrystal_I2C::Initialize(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, uint8_t backlighPin, t_backlighPol pol = POSITIVE )
+{
+  config(lcd_Addr, En, Rw, Rs, d4, d5, d6, d7);
+  setBacklightPin(backlighPin, pol);
 }
 
 // PUBLIC METHODS
