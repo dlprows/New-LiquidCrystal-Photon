@@ -1,0 +1,7 @@
+{
+  "name": "New-LiquidCrystal-photon",
+  "author": "Daniel Prows <prows.daniel@gmail.com>",
+  "license": "",
+  "version": "0.0.1",
+  "description": "A photon fork of the i2c parts of New LiquidCrystal"
+}
