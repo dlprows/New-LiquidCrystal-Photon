@@ -40,7 +40,8 @@
 class LiquidCrystal_I2C : public LCD 
 {
 public:
-   
+   LiquidCrystal_I2C ();
+
    /*!
     @method     
     @abstract   Class constructor. 
