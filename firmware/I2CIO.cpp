@@ -159,14 +159,12 @@ int I2CIO::write ( uint8_t value )
       _shadow = ( value & ~(_dirMask) );
 
       Wire.beginTransmission ( _i2cAddr );
-      delay(1);
 #if (ARDUINO <  100) && !SPARK
       Wire.send ( _shadow );
 #else
       Wire.write ( _shadow );
 #endif
       status = Wire.endTransmission ();
-      delay(2);
    }
    return ( (status == 0) );
 }
