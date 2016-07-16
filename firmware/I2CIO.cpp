@@ -76,7 +76,9 @@ I2CIO::I2CIO ( )
 int I2CIO::begin (  uint8_t i2cAddr )
 {
    _i2cAddr = i2cAddr;
-
+   
+   Wire.setSpeed(CLOCK_SPEED_100KHZ);
+   Wire.stretchClock(true);
    Wire.begin ( );
 
    _initialised = isAvailable ( _i2cAddr );
